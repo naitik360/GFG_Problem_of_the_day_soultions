@@ -1,0 +1,32 @@
+ class soltution
+ {
+ public:
+    vector<vector<int>> res;
+    void find(vector<vector<int>> &v,int r,int c,vector<int> k)
+    {
+        if(r==v.size()-1 && c==v[0].size()-1)
+        {   
+            k.push_back(v[r][c]);
+            res.push_back(k);
+            return ;
+        }
+        
+        if(r>=v.size() || c>=v[0].size())
+          return ;
+          
+        k.push_back(v[r][c]);
+        find(v,r+1,c,k);
+        k.pop_back();
+        
+        k.push_back(v[r][c]);
+        find(v,r,c+1,k);
+        k.pop_back();
+        
+    }
+    vector<vector<int>> findAllPossiblePaths(int n, int m, vector<vector<int>> &v)
+    {   
+        vector<int> k;
+        find(v,0,0,k);
+        return res;
+    }
+ };
